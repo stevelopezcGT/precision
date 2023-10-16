@@ -1,16 +1,17 @@
-﻿using PrecisionMongo.Core.Entities;
+﻿using PrecisionMongo.Core.DTOs;
+using PrecisionMongo.Core.Entities;
 
 namespace PrecisionMongo.Core.Interfaces
 {
     public interface ITodoService
     {
-        Task<List<TodoEntity>> GetAll();
+        Task<List<TodoDTO>> GetAll();
 
-        Task<TodoEntity?> GetAsync(string id);
+        Task<TodoDTO?> GetAsync(string id);
 
-        Task CreateAsync(TodoEntity newTodo);
+        Task CreateAsync(TodoCreateDTO newTodo);
 
-        Task UpdateAsync(string id, TodoEntity updateTodo);
+        Task UpdateAsync(string id, TodoDTO todoItem);
 
         Task RemoveAsync(string id);
     }

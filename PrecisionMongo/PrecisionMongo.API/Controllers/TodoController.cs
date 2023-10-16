@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PrecisionMongo.Core.DTOs;
 using PrecisionMongo.Core.Entities;
 using PrecisionMongo.Core.Interfaces;
 
@@ -18,9 +19,39 @@ namespace PrecisionMongo.API.Controllers
 
         [HttpGet]
 
-        public async Task<List<TodoEntity>> GetAll()
+        public async Task<List<TodoDTO>> GetAll()
         {
             return await todoService.GetAll();
         }
+        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTodoDTO(string id, TodoDTO todoDTO)
+        {
+            if (id != todoDTO.Id)
+            {
+                return BadRequest();
+            }
+
+            await todoService.UpdateAsync(id, todoDTO);
+
+            return NoContent();
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult<bool>> PostTodoCreateDTO(TodoCreateDTO todoCreateDTO)
+        {
+            await todoService.CreateAsync(todoCreateDTO);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTodo(string id)
+        {
+            await todoService.RemoveAsync(id);
+
+            return NoContent();
+        }
+
     }
 }
