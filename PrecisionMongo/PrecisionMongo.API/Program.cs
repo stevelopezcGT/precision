@@ -1,10 +1,11 @@
+using PrecisionMongo.API.Helpers;
 using PrecisionMongo.Core.Entities;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<MongoDbSettingsEntity>(builder.Configuration.GetSection("MongoDBSettings"));
+builder.Services.AddDependencies(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

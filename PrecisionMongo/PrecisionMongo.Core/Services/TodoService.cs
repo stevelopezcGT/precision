@@ -17,9 +17,29 @@ namespace PrecisionMongo.Core.Services
             this.todoRepository=todoRepository;
         }
 
-        public Task<List<TodoEntity>> GetAll()
+        public async Task CreateAsync(TodoEntity newTodo)
         {
-            return todoRepository.GetAll();
+            await todoRepository.CreateAsync(newTodo);
+        }
+
+        public async Task<List<TodoEntity>> GetAll()
+        {
+            return await todoRepository.GetAll();
+        }
+
+        public async Task<TodoEntity?> GetAsync(string id)
+        {
+            return await todoRepository.GetAsync(id);
+        }
+
+        public async Task RemoveAsync(string id)
+        {
+            await todoRepository.RemoveAsync(id);
+        }
+
+        public async Task UpdateAsync(string id, TodoEntity updateTodo)
+        {
+            await todoRepository.UpdateAsync(id, updateTodo);
         }
     }
 }
