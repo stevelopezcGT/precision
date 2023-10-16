@@ -13,5 +13,7 @@ namespace PrecisionMongo.Core.Entities
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
+        public int Duration { get; set; }
+        public DateTimeOffset SavedAt { get; set; } = DateTimeOffset.Now;
     }
 }
