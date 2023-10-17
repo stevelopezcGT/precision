@@ -14,5 +14,7 @@ namespace PrecisionMongo.Core.Interfaces
         Task UpdateAsync(string id, TodoDTO updateTodo);
 
         Task RemoveAsync(string id) ;
+
+        Task<ItemPaginationResponseDTO> GetAll(int pageSize, int pageNumber);
     }
 }
