@@ -23,7 +23,14 @@ namespace PrecisionMongo.API.Controllers
         {
             return await todoService.GetAll();
         }
-        
+
+        [HttpGet("WithPagination")]
+
+        public async Task<ItemPaginationResponseDTO> GetAllWithPagination(int pageSize, int pageNumber)
+        {
+            return await todoService.GetAll(pageSize, pageNumber);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTodoDTO(string id, TodoDTO todoDTO)
         {

@@ -42,5 +42,10 @@ namespace PrecisionMongo.Core.Services
         {
             await todoRepository.UpdateAsync(id, updateTodo);
         }
+
+        public async Task<ItemPaginationResponseDTO> GetAll(int pageSize, int pageNumber)
+        {
+            return await todoRepository.GetAll(pageSize, pageNumber);
+        }
     }
 }

@@ -49,5 +49,18 @@ namespace PrecisionMongo.Infrastructure.Repositories
 
         public async Task RemoveAsync(string id) => await context.Todos.DeleteOneAsync(x => x.Id == id);
 
+        public async Task<ItemPaginationResponseDTO> GetAll(int pageSize, int pageNumber)
+        {
+            List<TodoDTO> listTodos = new List<TodoDTO>();
+            var todos = await context.Todos.Find(_ => true).Limit(pageSize).Skip((pageNumber - 1) * pageSize).ToListAsync();
+            todos.ForEach(d => listTodos.Add(TodoToDto.CreateTodoDTO(d)));
+
+            ItemPaginationResponseDTO paginationResponseDTO = new ItemPaginationResponseDTO();
+            paginationResponseDTO.ItemList = listTodos;
+            paginationResponseDTO.TotalPages = await context.Todos.CountDocumentsAsync(_=> true);
+
+            return paginationResponseDTO;
+        }
+
     }
 }
