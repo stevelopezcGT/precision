@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrecisionMongo.Core.Enumerations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace PrecisionMongo.Core.DTOs
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public int Duration { get; set; }
+
+        public TodoStatus Status { get; set; }
     }
 }

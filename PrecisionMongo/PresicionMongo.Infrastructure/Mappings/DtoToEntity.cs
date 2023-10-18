@@ -25,7 +25,8 @@ namespace PrecisionMongo.Infrastructure.Mappings
             {
                 Duration = entity.Duration,
                 Name = entity.Name,
-                Id = entity.Id
+                Id = entity.Id,
+                Status = entity.Status
             };
         }
     }

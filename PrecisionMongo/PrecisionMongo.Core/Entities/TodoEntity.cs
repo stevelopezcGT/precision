@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using PrecisionMongo.Core.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace PrecisionMongo.Core.Entities
         public string Name { get; set; } = string.Empty;
         public int Duration { get; set; }
         public DateTimeOffset SavedAt { get; set; } = DateTimeOffset.Now;
+        public TodoStatus Status { get; set; } = TodoStatus.Pending;
     }
 }
